@@ -62,7 +62,7 @@ _marker setMarkerSize [200,200];
 // mettre un waituntil pour la présence de l'objet. si plus d'objet présent détruire le marker 
 
 _positionp = getpos player ;
-waitUntil { count ( _positionp nearObjects ["Land_Camping_Light_F", 20]) < 1
+waitUntil { count ( _positionp nearObjects ["Land_OPTRE_fusion_coil", 20]) < 1
 
 
 

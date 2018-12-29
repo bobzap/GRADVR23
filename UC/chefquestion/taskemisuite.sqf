@@ -14,8 +14,9 @@ execVM "UC\chefquestion\recompense_emi.sqf";
 
 
 
-sleep 3;
+sleep 4;
+
 _boitedelete = nearestObjects [player, ["Box_C_UAV_06_F"], 10];
-deleteVehicle (_boitedelete) select 0;
+deleteVehicle (_boitedelete select 0);
 
 

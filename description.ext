@@ -44,9 +44,6 @@ class CfgFunctions {
 	// };
 	
 	
-	
-	
-	
 };
 
 class RscTitles {
@@ -141,16 +138,17 @@ class CfgGradFortifications {
 			buildTime = 5;
         };
 		
-		class Land_Camping_Light_F {
+	  class Land_OPTRE_fusion_coil {
             boundingBoxSize = 1;
             canFloat = 1;
             canCollide = 1;
             size = 3;
             demolitionTime = 10;
 			buildTime = 5;
-			onBuildComplete = "execVM 'UC\marker\marker.sqf', execVM 'UC\Attack\ia.sqf'";  //add this code ine the init box when object is built
-        };
-		
+			onBuildComplete = "execVM 'UC\marker\marker.sqf', execVM 'UC\Attack\ia.sqf', execVM 'UC\effet\effect.sqf'";  //add this code ine the init box when object is built
+        }; 
+
+    	
 		class TargetPopup_ACR {
             boundingBoxSize = 1;
             canFloat = 1;
@@ -273,14 +271,6 @@ class CfgGradFortifications {
 			buildTime = 3;
 		};
 
-//call grad_moneymenu_fnc_setStorage;
-
-
-
-
-
-
-
 
 
     };
@@ -326,6 +316,48 @@ class CfgGradPersistence {
 class CfgSounds {
 	sounds[] = {};
     #include "modules\grad-leaveNotes\cfgSounds.hpp"
+
+class vum
+	{
+		name = "vum";
+		sound[] = {"\sound\vum.ogg", db-20, 1};
+		titles[] = {};
+	};
+	class up_impact
+	{
+		name = "up_impact";
+		sound[] = {"\sound\up_impact.ogg", db+10, 1};
+		titles[] = {};
+	};
+	class ecou
+	{
+		name = "ecou";
+		sound[] = {"\sound\ecou.ogg", db+20, 1};
+		titles[] = {};
+	};		
+	class oscilatie
+	{
+		name = "oscilatie";
+		sound[] = {"\sound\oscilatie.ogg", db+15, 1};
+		titles[] = {};
+	};	
+	class eco_ray	
+	{
+		name = "eco_ray";
+		sound[] = {"\sound\eco_ray.ogg", db+3, 1};
+		titles[] = {};
+	};
+	class earthquakes	
+	{
+		name = "earthquakes";
+		sound[] = {"\sound\earthquakes.ogg", 1, 1};
+		titles[] = {};
+	};
+
+
+
+
+
 };
 
 class CfgGradMoneymenu {
@@ -559,6 +591,14 @@ class CfgGradBuymenu {
 
             class Box_C_UAV_06_F {
 				displayName = "Caisse pour Transaction";
+				price = 500;
+				stock = 100;
+				Permissionlevel = 0;
+				code = "if (player == _this select 0)  then { if([player, _this select 1] call grad_fortifications_fnc_canTake) then {[player,_this select 1] call grad_fortifications_fnc_addfort;} else { hint 'Stock Plein' } }";
+			};
+
+            class Land_OPTRE_fusion_coil {
+				displayName = "Rayon de Contrôle de Zone";
 				price = 500;
 				stock = 100;
 				Permissionlevel = 0;

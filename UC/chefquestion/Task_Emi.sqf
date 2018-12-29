@@ -9,11 +9,9 @@ Objet : Script lancer des objectifs lors du questionnaire chef du village.
 / */
 
 
-
 _position = GetPos player;
 
-if (isserver) then {
-
+//if (isserver) then {
 
 [west,["Diplomatie"],["Apporter 5150 CR au chef du village pour apaiser les tensions. Apporter les crédits dans une caisse prévue pour les transactions","Diplomate"],[0,0,0],1,2,true] call BIS_fnc_taskCreate;
 
