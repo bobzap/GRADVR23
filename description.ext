@@ -1,0 +1,587 @@
+   #include "modules\grad-leaveNotes\grad_leaveNotes.hpp"
+   #include "modules\grad-moneymenu\grad_moneymenu.hpp"
+   #include "modules\grad-listBuymenu\grad_listBuymenu.hpp"
+   #include "modules\grad-fortifications\grad_fortifications.hpp"
+   #include "TER_TargetGUI\defines_A3.hpp"
+   #include "TER_TargetGUI\TER_target.hpp"
+   
+   #include "ACL\ACL_Rcs.hpp"
+
+respawn="BASE";
+respawndelay = 10;
+briefing = 1;
+debriefing = 1;
+saving = 0;
+disabledAI = 1;
+
+//limite de corps 
+corpseLimit = 1; //15
+
+
+class CfgFunctions {
+    #include "modules\grad-leaveNotes\cfgFunctions.hpp"
+    #include "modules\grad-listBuymenu\cfgFunctions.hpp"
+    #include "modules\grad-moneymenu\cfgFunctions.hpp"
+	#include "modules\grad-persistence\cfgFunctions.hpp"
+	#include "modules\grad-fortifications\cfgFunctions.hpp"
+	
+	// class TER
+	// {
+		// class mainFnc
+		// {
+			//class editString {file = "functions\editString.sqf";};
+			// class testRandom {file = "functions\testRandom.sqf";};
+		// };
+	// };
+	
+	// class DREAD
+	// {
+		// class getCfg
+		// {
+			// class copyConfigClass {file = "functions\fn_copyConfigClass.sqf"};
+			//_textBoxClass = [configFile] call DREAD_fnc_copyConfigClass;
+		// };
+	// };
+	
+	
+	
+	
+	
+};
+
+class RscTitles {
+    #include "modules\grad-fortifications\dialog\hint\title.hpp"
+};
+
+
+
+class Extended_InitPost_EventHandlers  {
+    class CAManBase {
+       init = "params ['_u']; if (!(isPlayer _u) && {local _u}) then {[_u,1780] call grad_lbm_fnc_addFunds};";
+    };
+};
+
+
+class CfgGradFortifications {
+    canDemolishDefault = 1;
+    demolitionTimeFactor = 1;
+    playerInventorySize = 100;
+    vehicleInventorySizeFactor = 250;
+    fortificationOwnerType = "SIDE"
+
+    class Fortifications {
+        class Land_BagFence_Long_F {
+            boundingBoxSize = 1;
+            canFloat = 1;
+            canCollide = 1;
+            size = 3;
+            demolitionTime = 10;
+			buildTime = 5;
+        };
+		
+		class Land_WoodPile_F {
+            boundingBoxSize = 1;
+            canFloat = 1;
+            canCollide = 1;
+            size = 3;
+            demolitionTime = 10;
+			buildTime = 10;
+        };
+		
+		class Land_Trench_01_grass_F {
+            boundingBoxSize = 1;
+            canFloat = 1;
+            canCollide = 1;
+            size = 3;
+            demolitionTime = 10;
+			buildTime = 30;
+        };
+		
+		class Land_Bunker_01_blocks_1_F {
+            boundingBoxSize = 1;
+            canFloat = 1;
+            canCollide = 1;
+            size = 20;
+            demolitionTime = 10;
+			buildTime = 30;
+        };
+		
+		class Land_FirePlace_F {
+            boundingBoxSize = 1;
+            canFloat = 1;
+            canCollide = 1;
+            size = 3;
+            demolitionTime = 10;
+			buildTime = 5;
+        };
+		
+		class ShootingMat_01_Olive_F {
+            boundingBoxSize = 1;
+            canFloat = 1;
+            canCollide = 1;
+            size = 10;
+            demolitionTime = 10;
+        };
+		
+		class ACE_ConcertinaWireCoil {
+            boundingBoxSize = 1;
+            canFloat = 1;
+            canCollide = 1;
+            size = 3;
+            demolitionTime = 10;
+			buildTime = 2;
+        };
+		
+		class Land_Target_Dueling_01_F {
+            boundingBoxSize = 1;
+            canFloat = 1;
+            canCollide = 1;
+            size = 3;
+            demolitionTime = 10;
+			buildTime = 5;
+        };
+		
+		class Land_Camping_Light_F {
+            boundingBoxSize = 1;
+            canFloat = 1;
+            canCollide = 1;
+            size = 3;
+            demolitionTime = 10;
+			buildTime = 5;
+			onBuildComplete = "execVM 'UC\marker\marker.sqf', execVM 'UC\Attack\ia.sqf'";  //add this code ine the init box when object is built
+        };
+		
+		class TargetPopup_ACR {
+            boundingBoxSize = 1;
+            canFloat = 1;
+            canCollide = 1;
+            size = 3;
+            demolitionTime = 10;
+			buildTime = 5;
+			onBuildComplete = "(_this select 1)  setVariable ['TER_isTarget', true, true]";  //add this code ine the init box when object is built
+        };
+		
+		class Target_PopUp_Moving_Acc2_F {
+            boundingBoxSize = 1;
+            canFloat = 1;
+            canCollide = 1;
+            size = 3;
+            demolitionTime = 10;
+			buildTime = 5;
+			onBuildComplete = "(_this select 1)  setVariable ['TER_isTarget', true, true]";  //add this code ine the init box when object is built
+        };
+
+		class Land_TripodScreen_01_dual_v2_F {
+            boundingBoxSize = 1;
+            canFloat = 1;
+            canCollide = 1;
+            size = 3;
+            demolitionTime = 10;
+			buildTime = 5;
+			
+        };
+		
+		
+		class CamoNet_BLUFOR_F {
+            boundingBoxSize = 1;
+            canFloat = 1;
+            canCollide = 1;
+            size = 20;
+            demolitionTime = 10;
+			buildTime = 15;
+        };
+		
+		class Land_OPTRE_ConstructionBarrier1 {
+            boundingBoxSize = 1;
+            canFloat = 1;
+            canCollide = 1;
+            size = 30;
+            demolitionTime = 10;
+			buildTime = 15;
+        };
+		
+		class Land_OPTRE_M72_barrierBlk {
+            boundingBoxSize = 1;
+            canFloat = 1;
+            canCollide = 1;
+            size = 30;
+            demolitionTime = 10;
+			buildTime = 15;
+        };
+		
+		class Downy_Barricade {
+            boundingBoxSize = 1;
+            canFloat = 1;
+            canCollide = 1;
+            size = 20;
+            demolitionTime = 10;
+			buildTime = 15;
+        };
+		
+		
+		class Land_OPTRE_blast_barrier_dest {
+            boundingBoxSize = 1;
+            canFloat = 1;
+            canCollide = 1;
+            size = 30;
+            demolitionTime = 10;
+			buildTime = 15;
+        };	
+		
+        class SWOP_Barricade {
+            boundingBoxSize = 0.8;
+            surfaceNormal = 0;
+            size = 20;
+            canDemolish = 0;
+			buildTime = 15;
+        };
+		
+		 class Land_HBarrier_1_F {
+            boundingBoxSize = 0.8;
+            surfaceNormal = 0;
+            size = 20;
+            canDemolish = 0;
+			buildTime = 15;
+        };
+        class Land_TripodScreen_01_large_F {
+            boundingBoxSize = 0.8;
+            surfaceNormal = 0;
+			size = 20;
+            canDemolish = 0;
+            onBuildComplete = "(_this select 1)  remoteExecCall ['MRH_fnc_isSatMonitor', 0]";   
+			buildTime = 10;
+	//remoteExecCall ["fnc_someScriptedFunction", targets, JIP];
+        };
+		
+		
+		 class Land_WaterTank_03_F {
+           boundingBoxSize = 1;
+            canFloat = 1;
+            canCollide = 1;
+            size = 20;
+            demolitionTime = 4;
+			buildTime = 3;
+		};
+
+         class Box_C_UAV_06_F {
+           boundingBoxSize = 1;
+            canFloat = 1;
+            canCollide = 1;
+            size = 20;
+            demolitionTime = 4;
+            onBuildComplete = "(_this select 1)  remoteExecCall ['grad_moneymenu_fnc_setStorage', 0]";
+			buildTime = 3;
+		};
+
+//call grad_moneymenu_fnc_setStorage;
+
+
+
+
+
+
+
+
+
+    };
+	
+	    
+    class Vehicles {
+        class B_T_Truck_01_covered_F {
+            isStorage = 1;
+            vehicleInventorySize = 150;
+        };
+		
+		class Namer_CRV_D {
+            isStorage = 1;
+            vehicleInventorySize = 150;
+        };
+    };
+}; 
+
+
+
+
+
+class CfgGradPersistence {
+    missionTag = "missionName";
+    loadOnMissionStart = 0;
+    missionWaitCondition = "missionNamespace getVariable ['CBA_missionTime',-1] > 10";
+    playerWaitCondition = "true"; 
+    saveUnits = 0;
+    saveVehicles = 0;
+    saveContainers = 0;
+    saveStatics = 1;
+    savePlayerInventory = 1;
+    savePlayerDamage = 0;
+    savePlayerPosition = 0;
+    savePlayerMoney = 1;
+    saveTeamAccounts = 1;
+	
+};
+
+
+
+
+class CfgSounds {
+	sounds[] = {};
+    #include "modules\grad-leaveNotes\cfgSounds.hpp"
+};
+
+class CfgGradMoneymenu {
+    canGiveDefault = 1;                                                    
+    canTransferToSidesDefault[] = {"east","west","independent","civilian"};
+    canTakeFromDeadDefault = 1;        
+    canSendDirectlyDefault = 0;                                    
+    canTakeFromSurrenderedDefault = 1;                                     
+    startMoney = 10000;                                                        
+    startBankBalance = 10000;                                                  
+    atmObjects[] = {"SWOP_computerTerminal3"};                                      
+};
+
+
+
+class CfgGradBuymenu {
+    vehicleMarkers = 1;
+    tracking = 1;
+    trackingTag = "myMission";
+
+    //buyables set:
+    class AmericanStuff {
+
+        //category:  
+        class Weapons {
+            kindOf = "Weapons";
+            displayName = "Weapons";
+
+            //items of this category:
+            class rhs_weap_m240G {
+                displayName = "M240G";
+                description = "The M240 is a belt-fed, gas-operated general purpose machine gun firing the 7.62x51mm NATO cartridge.";
+                price = 2500;
+                stock = 5;
+                opticsItem = "optic_Aco";
+            };
+        };
+
+        class Units {
+            displayname = "Units";
+            kindOf = "Units";
+            tracking = 0;
+
+            class B_Soldier_SL_F {
+                displayName = "NATO Squadleader (x3)";
+                description = "This is a team of NATO squad leaders.";
+                price = 3000;
+                amount = 3;
+                stock = 5;
+                code = "{_x removeWeaponGlobal (primaryWeapon _x)} forEach units (_this select 2)";
+            };
+        };
+    };
+
+    //a different set of buyables
+    class RussianStuff {        
+        class Vehicles {
+            displayName = "Vehicles";
+            kindOf = "Vehicles";
+
+            class C_Hatchback_01_sport_F {
+                displayName = "Hatchback (Sport)";
+                description = "This thing is quick";
+                price = 4000;
+                stock = 10;
+                picture = "myPictureFolder\sportscar.paa";  //this item uses a custom picture
+                code = "(_this select 2) setFuel 0.5";  //this car will spawn with half a tank of gas                
+                spawnEmpty = true;
+            };
+			
+			class TGV_BeletteBeer {
+                displayName = "biere (Sport)";
+                description = "This thing is quick";
+                price = 0;
+                stock = 10; 
+                spawnEmpty = true;
+            };
+        };
+
+        class Items {
+            displayName = "Items";
+            kindOf = "Items";
+
+            class TGV_BeletteBeer {
+                displayName = "Biere";
+                description = "10 simple bandages in sterile packaging.";
+                amount = 0;
+                price = 100;
+                stock = 40;     //note that a total of 400 bandages can be bought (in sets of 10)
+            };
+        };
+    };
+	
+	class logistique {
+		class items {
+			displayName = "Defenses";
+			kindOf = "Other";
+
+
+			class Land_HBarrier_1_F {
+				displayName = "H-Barrier (1)";
+				price = 200;
+				stock = 20;
+				code = "if (player == _this select 0)  then { if([player, _this select 1] call grad_fortifications_fnc_canTake) then {[player,_this select 1] call grad_fortifications_fnc_addfort;} else { hint 'Stock Plein' } }";
+			};
+
+			class Land_HBarrier_3_F {
+				displayName = "H-Barrier (3)";
+				price = 350;
+				stock = 15;
+				code = "if (player == _this select 0)  then { if([player, _this select 1] call grad_fortifications_fnc_canTake) then {[player,_this select 1] call grad_fortifications_fnc_addfort;} else { hint 'Stock Plein' } }";
+			};
+
+			class Land_HBarrier_5_F {
+				displayName = "H-Barrier (5)";
+				price = 500;
+				stock = 10;
+				code = "if (player == _this select 0)  then { if([player, _this select 1] call grad_fortifications_fnc_canTake) then {[player,_this select 1] call grad_fortifications_fnc_addfort;} else { hint 'Stock Plein' } }";
+			};
+
+			class Land_BagFence_Short_F {
+				displayName = "Sandbags (short)";
+				price = 200;
+				stock = 20;
+				code = "if (player == _this select 0)  then { if([player, _this select 1] call grad_fortifications_fnc_canTake) then {[player,_this select 1] call grad_fortifications_fnc_addfort;} else { hint 'Stock Plein' } }";
+			};
+
+			class Land_BagFence_Long_F {
+				displayName = "Sandbags (long)";
+				price = 300;
+				stock = 20;
+				code = "if (player == _this select 0)  then { if([player, _this select 1] call grad_fortifications_fnc_canTake) then {[player,_this select 1] call grad_fortifications_fnc_addfort;} else { hint 'Stock Plein' } }";
+			};
+
+			class Land_TripodScreen_01_large_F {
+				displayName = "Ecran satellite";
+				price = 150;
+				stock = 50;
+				Permissionlevel = 2;
+				code = "if (player == _this select 0)  then { if([player, _this select 1] call grad_fortifications_fnc_canTake) then {[player,_this select 1] call grad_fortifications_fnc_addfort;} else { hint 'Stock Plein' } }";
+			};
+	
+			class Land_Target_Dueling_01_F {
+				displayName = "Cible d'entrainement Duel";
+				price = 10;
+				stock = 500;
+				Permissionlevel = 0;
+				code = "if (player == _this select 0)  then { if([player, _this select 1] call grad_fortifications_fnc_canTake) then {[player,_this select 1] call grad_fortifications_fnc_addfort;} else { hint 'Stock Plein' } }";
+			};
+	
+			class TargetPopup_ACR {
+				displayName = "Cible d'entrainement 1";
+				price = 10;
+				stock = 500;
+				Permissionlevel = 0;
+				code = "if (player == _this select 0)  then { if([player, _this select 1] call grad_fortifications_fnc_canTake) then {[player,_this select 1] call grad_fortifications_fnc_addfort;} else { hint 'Stock Plein' } }";
+			};
+			
+			class TargetBootcampHumanSimple_F {
+				displayName = "Cible d'entrainement 2";
+				price = 10;
+				stock = 500;
+				Permissionlevel = 0;
+				code = "if (player == _this select 0)  then { if([player, _this select 1] call grad_fortifications_fnc_canTake) then {[player,_this select 1] call grad_fortifications_fnc_addfort;} else { hint 'Stock Plein' } }";
+			};
+	
+			class CamoNet_BLUFOR_F {
+				displayName = "Filet de camouflage";
+				price = 10;
+				stock = 100;
+				Permissionlevel = 1;
+				code = "if (player == _this select 0)  then { if([player, _this select 1] call grad_fortifications_fnc_canTake) then {[player,_this select 1] call grad_fortifications_fnc_addfort;} else { hint 'Stock Plein' } }";
+			};
+	
+			class Land_OPTRE_ConstructionBarrier1 {
+				displayName = "Protection";
+				price = 5;
+				stock = 100;
+				Permissionlevel = 1;
+				code = "if (player == _this select 0)  then { if([player, _this select 1] call grad_fortifications_fnc_canTake) then {[player,_this select 1] call grad_fortifications_fnc_addfort;} else { hint 'Stock Plein' } }";
+			};
+	
+			class Land_OPTRE_M72_barrierBlk {
+				displayName = "Protection déployable";
+				price = 20;
+				stock = 100;
+				Permissionlevel = 1;
+				code = "if (player == _this select 0)  then { if([player, _this select 1] call grad_fortifications_fnc_canTake) then {[player,_this select 1] call grad_fortifications_fnc_addfort;} else { hint 'Stock Plein' } }";
+			};
+	
+			class Downy_Barricade {
+				displayName = "Protection";
+				price = 5;
+				stock = 100;
+				Permissionlevel = 1;
+				code = "if (player == _this select 0)  then { if([player, _this select 1] call grad_fortifications_fnc_canTake) then {[player,_this select 1] call grad_fortifications_fnc_addfort;} else { hint 'Stock Plein' } }";
+			};
+	
+			class SWOP_Barricade {
+				displayName = "Protection";
+				price = 5;
+				stock = 100;
+				Permissionlevel = 1;
+				code = "if (player == _this select 0)  then { if([player, _this select 1] call grad_fortifications_fnc_canTake) then {[player,_this select 1] call grad_fortifications_fnc_addfort;} else { hint 'Stock Plein' } }";
+			};
+	
+			class Land_OPTRE_blast_barrier_dest {
+				displayName = "Protection";
+				price = 5;
+				stock = 100;
+				Permissionlevel = 1;
+				code = "if (player == _this select 0)  then { if([player, _this select 1] call grad_fortifications_fnc_canTake) then {[player,_this select 1] call grad_fortifications_fnc_addfort;} else { hint 'Stock Plein' } }";
+			};
+	
+			
+			class Land_TripodScreen_01_dual_v2_F {
+				displayName = "Ecran pour Cibles";
+				price = 50;
+				stock = 100;
+				Permissionlevel = 2;
+				code = "if (player == _this select 0)  then { if([player, _this select 1] call grad_fortifications_fnc_canTake) then {[player,_this select 1] call grad_fortifications_fnc_addfort;} else { hint 'Stock Plein' } }";
+			};
+			
+			class Land_WaterTank_03_F {
+				displayName = "Ressource minérale";
+				price = 500;
+				stock = 100;
+				Permissionlevel = 0;
+				code = "if (player == _this select 0)  then { if([player, _this select 1] call grad_fortifications_fnc_canTake) then {[player,_this select 1] call grad_fortifications_fnc_addfort;} else { hint 'Stock Plein' } }";
+			};
+
+            class Box_C_UAV_06_F {
+				displayName = "Caisse pour Transaction";
+				price = 500;
+				stock = 100;
+				Permissionlevel = 0;
+				code = "if (player == _this select 0)  then { if([player, _this select 1] call grad_fortifications_fnc_canTake) then {[player,_this select 1] call grad_fortifications_fnc_addfort;} else { hint 'Stock Plein' } }";
+			};
+
+		};
+
+	};
+ 
+};
+
+
+
+
+
+	class GRAD_leaveNotes {
+		playerDistance = 1;             
+		actOffset[] = {0,0,0.1};        
+		actDist = 2;                    
+		noteObject = "Land_Tablet_02_F";  
+		startAmount = 10;               
+		visibleHandwriting = 1;         
+		canWriteDefault = 1;            
+		canInspectDefault = 1;          
+	};
