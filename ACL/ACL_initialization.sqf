@@ -36,7 +36,7 @@ sleep 2;
 //[player] spawn ACL_fnc_keys;
 
 // ------------------ AJOUTER AUTANT DE FOIS QU'IL Y A DE SECTEURS ------ [TYPE DE CIVILS, "NOM_MARQUEUR", NOMBRE DE CIVILS] execVM
-_s1 = [0, "marker_1", 5] execVM "ACL\ACL_spawn.sqf";
+//_s1 = [0, "marker_1", 5] execVM "ACL\ACL_spawn.sqf";
 
 //_s1 = [0, "marker_2", 5] execVM "ACL\ACL_spawn.sqf";
 

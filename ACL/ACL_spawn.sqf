@@ -17,6 +17,23 @@ _number = (_this select 2);
 _markerPos = (getMarkerPos _marker);
 _markerSize = ((getMarkerSize _marker) select 0);
 
+
+
+//_nombre = count (allPlayers select {_x distance _markerPos < 600}); 
+/* _nombre = count (allPlayers select {_x distance _markerPos < 100});
+waitUntil {  
+	
+	if  ( _nombre > 0 ) 
+	exitWith {true};
+
+ }; */
+
+// nombre de joueurs présent 
+
+
+
+
+
 if (_type == 0) then {_case = ACL_class_VANILLA};
 if (_type == 1) then {_case = ACL_class_AFGHAN};
 if (_type == 2) then {_case = ACL_class_AFRICAN};
