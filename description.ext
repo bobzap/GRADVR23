@@ -19,6 +19,7 @@ corpseLimit = 1; //15
 
 
 class CfgFunctions {
+    #include "UC\functions\hpp_functions.hpp"
     #include "modules\grad-leaveNotes\cfgFunctions.hpp"
     #include "modules\grad-listBuymenu\cfgFunctions.hpp"
     #include "modules\grad-moneymenu\cfgFunctions.hpp"
